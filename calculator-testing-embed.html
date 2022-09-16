@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+</head>
+<body>
+    <style>
+        .hs-email,
+        .hs-submit {
+            display: none;
+        }
+
+        .hs-email.show,
+        .hs-submit.show {
+            display: block;
+        }
+    </style>
+
+
+    <div class="calculator">
+        <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/v2.js"></script>
+        <script>
+        hbspt.forms.create({
+            region: "na1",
+            portalId: "22410818",
+            formId: "45ecaec0-c9e8-431c-b199-f9a525c1a7fe",
+            version: "V2_PRERELEASE"
+        });
+        </script>
+        <div class="extra">
+            <p>To learn more about your quote or specific modules, reach out and someone from our team will contact you.</p>
+            <button class="trigger-step">Email My Quote</button>
+        </div>
+        <input type="number" class="testing">
+    </div>
+
+    <script>
+        const trigger = document.querySelector('.trigger-step');
+
+        trigger.addEventListener('click', function(){
+            const form = document.querySelector('.hbspt-form > form');
+            const extra = document.querySelector('.extra');
+            const email = document.querySelector('.hs-email');
+            const submit = document.querySelector('.hs-submit');
+
+            extra.style.display = 'none';
+            email.classList.add('show');
+            submit.classList.add('show');
+        });
+
+        setTimeout(function(){
+            const employees = document.querySelector('input[name="number_of_employees__pricing_"]');
+            const estimate = document.querySelector('input[name="pricing_estimate"]');
+            const email = document.querySelector('input[name="email"]');
+            const testing = document.querySelector('input.testing');
+            employees.addEventListener('change', function(e){
+                const number = e.target.value;
+                email.value = e.target.value;
+                console.log(email.value)
+            });
+        }, 500);
+    </script>
+</body>
+</html>

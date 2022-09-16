@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+</head>
+<body>
+    <style>
+        fieldset.hide {
+            display: none;
+        }
+    </style>
+
+
+    <div class="calculator">
+        <div class="form-wrapper">
+            <form action="" onsubmit="sConsole(event)">
+                <fieldset class="auto-show">
+                    <input type="text" name="name" id="name" placeholder="name">
+                    <input type="text" name="company" id="company" placeholder="company">
+                </fieldset>
+                <fieldset class="continue-wrapper">
+                    <button>
+                        Continue
+                    </button>
+                </fieldset>
+                <fieldset class="email-wrapper hide">
+                    <input type="email" name="email" id="email" placeholder="email">
+                </fieldset>
+                <fieldset class="submit-wrapper hide">
+                    <input type="submit" name="submit" id="submit">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function sConsole(event) {
+            event.preventDefault();
+            const name = document.getElementById('name');
+            const company = document.getElementById('company');
+            const email = document.getElementById('email');
+
+            const data = [name.value, company.value, email.value];
+            console.table(data);
+        }
+
+        const continueWrapper = document.querySelector('fieldset.continue-wrapper');
+        const btnCont = continueWrapper.querySelector('button');
+        const autoShow = document.querySelector('fieldset.auto-show');
+        const emailWrapper = document.querySelector('fieldset.email-wrapper');
+        const submitWrapper = document.querySelector('fieldset.submit-wrapper');
+
+        const btnSubmit = document.getElementById('submit');
+
+        btnCont.addEventListener('click', e=>{
+            e.preventDefault();
+            autoShow.classList.add('hide');
+            continueWrapper.classList.add('hide');
+            emailWrapper.classList.remove('hide');
+            submitWrapper.classList.remove('hide');
+        });
+    </script>
+
+</body>
+</html>
