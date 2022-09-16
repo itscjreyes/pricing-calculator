@@ -105,6 +105,11 @@
         let benefitsBrokerCost;
         let benefitsTotal;
         let payrollTotal;
+        let loaAdmin;
+        let compliance;
+        let hr2;
+        let hr3;
+        let hrTotal;
         let estimate;
 
         function calculation(){
@@ -570,7 +575,8 @@
                     break;
                 // End ER5
                 // Start ER6&7
-                case (employeeRange > 5):
+                case (employeeRange == 6):
+                case (employeeRange == 7):
                     switch (true) {
                         // Start ER6&7 Bi-Weekly
                         case (payFreqScale == 1):
@@ -602,9 +608,11 @@
                                     payrollTotal = 39;
                                     break;
                                 case (turnoverScale == 2):
+                                    console.log('this')
                                     payrollTotal = 39;
                                     break;
                                 case (turnoverScale == 3):
+                                    console.log('that')
                                     payrollTotal = 40;
                                     break;
                                 default:
@@ -641,25 +649,56 @@
                     break;
             }
 
-            // HR
+            // HR: LOA Admin
+            switch (true) {
+                case (employeeRange < 4):
+                    loaAdmin = 15;
+                    break;
+                case (employeeRange == 5):
+                    loaAdmin = 10;
+                    break;
+                case (employeeRange == 6):
+                    loaAdmin = 8;
+                    break;
+                case (employeeRange == 7):
+                    loaAdmin = 7;
+                    break;
+                default:
+                    break;
+            }
+
+            // HR: Compliance
+            switch (true) {
+                case (employeeRange < 3):
+                    compliance = 20;
+                    break;
+                case (employeeRange == 3):
+                    compliance = 15;
+                    break;
+                case (employeeRange < 6):
+                    compliance = 10;
+                    break;
+                case (employeeRange > 5):
+                    compliance = 8;
+                    break;
+                default:
+                    break;
+            }
+
+            // HR Tier 2
+
+            // HR Tier 3
+
+            // HR Total
+            hrTotal = loaAdmin + compliance;
 
             // Estimate
             estimate = technology + benefitsTotal + payrollTotal;
 
-            const calcData = {};
-            calcData.employeeRange = employeeRange;
-            calcData.technology = technology;
-            calcData.benefitsSupport = benefitsSupport;
-            calcData.benefitsSupportTotal = benefitsSupportTotal;
-            calcData.benefitsBrokerCost = benefitsBrokerCost;
-            calcData.benefitsTotal = benefitsTotal;
-            calcData.payrollTotal = payrollTotal
-            calcData.estimate = estimate;
-            console.table(calcData);
-
             embedTechTotal.innerHTML = technology;
             embedBenefitsTotal.innerHTML = benefitsTotal;
             embedPayrollTotal.innerHTML = payrollTotal;
+            embedHrTotal.innerHTML = hrTotal;
             embedEstimateTotal.innerHTML = estimate;
         }
 
