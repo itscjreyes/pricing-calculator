@@ -48,7 +48,7 @@
             High: 38
             Very High: 39
 
-    Employee Range: 4
+    Employee Range: 3
         Bi-Weekly
             Low: 38
             Avg: 39
@@ -56,7 +56,7 @@
             Very High: 40
         Weekly
             Low: 48
-            Avg: 39
+            Avg: 49
             High: 49
             Very High: 50
         Monthly
@@ -65,19 +65,53 @@
             High: 36
             Very High: 37
 
+    Employee Range: 4
+        Bi-Weekly
+            Low: 35
+            Avg: 36
+            High: 36
+            Very High: 37
+        Weekly
+            Low: 44
+            Avg: 45
+            High: 46
+            Very High: 46
+        Monthly
+            Low: 32
+            Avg: 33
+            High: 33
+            Very High: 34
+
     Employee Range: 5
         Bi-Weekly
+            Low: 33
+            Avg: 34
+            High: 34
+            Very High: 35
+        Weekly
+            Low: 42
+            Avg: 42
+            High: 43
+            Very High: 43
+        Monthly
+            Low: 30
+            Avg: 31
+            High: 31
+            Very High: 32
+
+    Employee Range: 6 & 7
+        Bi-Weekly
+            Low: 30
+            Avg: 31
+            High: 31
+            Very High: 32
+        Weekly
             Low: 38
             Avg: 39
             High: 39
             Very High: 40
-        Weekly
-            Low: 48
-            Avg: 39
-            High: 49
-            Very High: 50
         Monthly
-            Low: 35
-            Avg: 35
-            High: 36
-            Very High: 37
+            Low: 28
+            Avg: 28
+            High: 29
+            Very High: 29
