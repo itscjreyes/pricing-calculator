@@ -8,81 +8,109 @@
 </head>
 <body>
     <style>
-        .hide {
+        .hide-fields {
             display: none;
         }
 
-        .breakdown {
+        .calculator-section .container {
             display: flex;
-            gap: 40px;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .calc-content {
+            width: 45%;
+        }
+
+        .estimate-dom {
+            width: 50%;
         }
     </style>
 
 
-    <div class="calculator">
-        <div class="estimate-dom">
-            <h1>Total: $<span id="estimate-total">140</span>/per employee per month</h1>
-            <div class="breakdown">
-                <h2>HR: $<span id="hr-total">70</span></h2>
-                <h2>Benefits: $<span id="benefits-total">0</span></h2>
-                <h2>Payroll: $<span id="payroll-total">40</span></h2>
-                <h2>Technology: $<span id="tech-total">30</span></h2>
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calc-content">
+                <button class="trigger-calc-fields hide-fields">Pricing Factors</button>
+                <div class="calc-fields">
+                    <fieldset>
+                        <label for="number-of-employees">Number of US Employees</label>
+                        <input type="number" name="number-of-employees" id="number-of-employees" placeholder="50" max="250" min="1" value="20" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="pay-frequency">Pay Frequency</label>
+                        <select name="pay-frequency" id="pay-frequency" required>
+                            <option value="Bi-Weekly or Semi-Monthly" selected>Bi-Weekly or Semi-Monthly</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label for="turnover-rate">Employee Turnover Rate</label>
+                        <select name="turnover-rate" id="turnover-rate" required>
+                            <option value="Low (Less than 5% per year)">Low (Less than 5% per year)</option>
+                            <option value="Average (5-10% per year)" selected>Average (5-10% per year)</option>
+                            <option value="High (10-20% per year)">High (10-20% per year)</option>
+                            <option value="Very High (more than 20% per year)">Very High (more than 20% per year)</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label for="benefits-broker">Will Melita be your benefits broker?</label>
+                        <select name="benefits-broker" id="benefits-broker" required>
+                            <option value="Yes" selected>Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="calc-midpoint">
+                    <p>To learn more about your quote or specific modules, reach out and someone from our team will contact you.</p>
+                    <button class="trigger-step btn btn-full">Email My Quote</button>
+                </div>
+                <div class="final-calc-fields hide-fields">
+                    <fieldset class="calc-email-field">
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Email" id="email" required>
+                    </fieldset>
+                    <fieldset>
+                        <input type="checkbox" id="request-consultation" name="request-consultation">
+                        <label for="request-consultation">Request a consultation from one of our experts</label>
+                    </fieldset>
+                    <div>
+                        <button onclick=formv3() class="btn btn-full">Email My Quote</button>
+                    </div>
+                </div>
+            </div>  
+            <div class="estimate-dom">
+                <h1>Total: $<span id="estimate-total">143</span>/per employee per month</h1>
+                <div class="calc-breakdown">
+                    <h2>HR: $<span id="hr-total">72</span></h2>
+                    <h2>Benefits: $<span id="benefits-total">0</span></h2>
+                    <h2>Payroll: $<span id="payroll-total">41</span></h2>
+                    <h2>Technology: $<span id="tech-total">30</span></h2>
+                </div>
             </div>
-        </div>
-
-            <fieldset>
-                <label for="number-of-employees">Number of Employees</label>
-                <input type="number" name="number-of-employees" id="number-of-employees" placeholder="50" max="250" min="1" value="20" required>
-            </fieldset>
-            <fieldset>
-                <label for="pay-frequency">Pay Frequency</label>
-                <select name="pay-frequency" id="pay-frequency" required>
-                    <option value="Bi-Weekly or Semi-Monthly" selected>Bi-Weekly or Semi-Monthly</option>
-                    <option value="Weekly">Weekly</option>
-                    <option value="Monthly">Monthly</option>
-                </select>
-            </fieldset>
-            <fieldset>
-                <label for="turnover-rate">Employee Turnover Rate</label>
-                <select name="turnover-rate" id="turnover-rate" required>
-                    <option value="Low (Less than 5% per year)" selected>Low (Less than 5% per year)</option>
-                    <option value="Average (5-10% per year)">Average (5-10% per year)</option>
-                    <option value="High (10-20% per year)">High (10-20% per year)</option>
-                    <option value="Very High (more than 20% per year)">Very High (more than 20% per year)</option>
-                </select>
-            </fieldset>
-            <fieldset>
-                <label for="benefits-broker">Will Melita be your benefits broker?</label>
-                <select name="benefits-broker" id="benefits-broker" required>
-                    <option value="Yes" selected>Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </fieldset>
-            <div class="midpoint">
-                <p>To learn more about your quote or specific modules, reach out and someone from our team will contact you.</p>
-                <button class="trigger-step">Email My Quote</button>
-            </div>
-            <fieldset class="hide">
-                <label for="email">Email</label>
-                <input type="email" placeholder="Email" id="email" required>
-            </fieldset>
-    </div>
-    <div class="hide">
-        <button onclick=formv3()>Email My Quote</button>
-    </div>
-
+        </div>           
+    </section>
 
     <script>
         const trigger = document.querySelector('.trigger-step');
+        const triggerCalcFields = document.querySelector('.trigger-calc-fields');
+        const midpoint = document.querySelector('.calc-midpoint');
+        const calcFields = document.querySelector('.calc-fields');
+        const finalCalcFields = document.querySelector('.final-calc-fields');
+
         trigger.addEventListener('click', function(e){
             e.preventDefault();
-            const midpoint = document.querySelector('.midpoint');
-            const hiddenFields = document.querySelectorAll('.hide');
-            hiddenFields.forEach(function(hidden) {
-                hidden.classList.remove('hide');
-            });
+            midpoint.classList.add('hide-fields');
+            calcFields.classList.add('hide-fields');
+            triggerCalcFields.classList.remove('hide-fields');
+            finalCalcFields.classList.remove('hide-fields');
+        });
 
-            midpoint.classList.add('hide');
+        triggerCalcFields.addEventListener('click', function(e){
+            e.preventDefault();
+            triggerCalcFields.classList.toggle('open');
+            calcFields.classList.toggle('hide-fields');
         });
 
         const numEmployees = document.getElementById('number-of-employees');
@@ -104,14 +132,14 @@
         let compliance;
         let hr2;
         let hr3;
-        let hrTotal = 70;
+        let hrTotal = 72;
         let benefitsSupport;
         let benefitsSupportTotal;
         let benefitsBrokerCost;
         let benefitsTotal = 0;
-        let payrollTotal = 40;
+        let payrollTotal = 41;
         let technology = 30;
-        let estimate = 140;
+        let estimate = 143;
 
         function calculation(){
             const employeeValue = numEmployees.value;
@@ -841,6 +869,7 @@
             var xhr = new XMLHttpRequest();
             var url = 'https://api.hsforms.com/submissions/v3/integration/submit/22410818/45ecaec0-c9e8-431c-b199-f9a525c1a7fe';
             const utcTimestamp = new Date().getTime();
+            const requestCall = document.getElementById('request-consultation').checked ? "Yes" : "No";
             
             // Example request JSON:
             var data = {
@@ -896,6 +925,11 @@
                 "name": "email",
                 "value": email.value
                 },
+                {
+                "objectTypeId": "0-1",
+                "name": "request_a_consultation_pricing_",
+                "value": requestCall
+                },
             ]
             }
 
@@ -907,9 +941,16 @@
 
             xhr.onreadystatechange = function() {
                 if(xhr.readyState == 4 && xhr.status == 200) { 
-                    alert(xhr.responseText); // Returns a 200 response if the submission is successful.
+                    // alert(xhr.responseText); // Returns a 200 response if the submission is successful.
+                    const calcContainer = document.querySelector('.calculator-section .container');
+                    calcContainer.innerHTML = "";
+                    calcContainer.innerHTML = "<div class='calculator-submission-content'><p>Thank you for requesting a call. One of our Solution Advisors will contact you shortly.</p><p>Interested in learning more about how Melita can help with your business\'s long-term success?</p><p><a href='https://melitagroup.com/resources' class='btn btn-full'>Explore Resource Hub</a></p></div>";    
                 } else if (xhr.readyState == 4 && xhr.status == 400){ 
-                    alert(xhr.responseText); // Returns a 400 error the submission is rejected.          
+                    // alert(xhr.responseText); // Returns a 400 error the submission is rejected.
+                    const calcEmail = document.querySelector('.calc-email-field');
+                    const emailError = document.createElement("p");	// Create a new element
+                    emailError.innerText = 'Please enter a valid email address.';  
+                    calcEmail.appendChild(emailError);
                 } else if (xhr.readyState == 4 && xhr.status == 403){ 
                     alert(xhr.responseText); // Returns a 403 error if the portal isn't allowed to post submissions.           
                 } else if (xhr.readyState == 4 && xhr.status == 404){ 
