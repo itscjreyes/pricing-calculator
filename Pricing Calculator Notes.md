@@ -7,6 +7,11 @@
     6: 126-175
     7: 176-250
 
+## Pay Frequency Scale
+    1: Bi-Weekly/Bi-Monthly
+    2: Weekly
+    3: Monthly
+
 ## Turnover Scale
     0: Low
     1: Average
@@ -115,3 +120,71 @@
             Avg: 28
             High: 29
             Very High: 29
+
+## HR: Tier 2
+    Turnover: 0
+        ER1: 20
+        ER2: 20
+        ER3: 15
+        ER4: 15
+        ER5: 15
+        ER6: 10
+        ER7: 10
+    Turnover: 1
+        ER1: 21
+        ER2: 21
+        ER3: 16
+        ER4: 16
+        ER5: 16
+        ER6: 11
+        ER7: 11
+    Turnover: 2
+        ER1: 22
+        ER2: 22
+        ER3: 17
+        ER4: 17
+        ER5: 17
+        ER6: 11
+        ER7: 11
+    Turnover: 3
+        ER1: 23
+        ER2: 23
+        ER3: 17
+        ER4: 17
+        ER5: 17
+        ER6: 12
+        ER7: 12
+
+## HR: Tier 3
+    Turnover: 0
+        ER1: 15
+        ER2: 15
+        ER3: 10
+        ER4: 10
+        ER5: 10
+        ER6: 10
+        ER7: 10
+    Turnover: 1
+        ER1: 16
+        ER2: 16
+        ER3: 11
+        ER4: 11
+        ER5: 11
+        ER6: 11
+        ER7: 11
+    Turnover: 2
+        ER1: 17
+        ER2: 17
+        ER3: 11
+        ER4: 11
+        ER5: 11
+        ER6: 11
+        ER7: 11
+    Turnover: 3
+        ER1: 17
+        ER2: 17
+        ER3: 12
+        ER4: 12
+        ER5: 12
+        ER6: 12
+        ER7: 12

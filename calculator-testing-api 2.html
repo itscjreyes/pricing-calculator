@@ -21,14 +21,15 @@
 
     <div class="calculator">
         <div class="estimate-dom">
-            <h1>Total: $<span id="estimate-total">142</span>/per employee per month</h1>
+            <h1>Total: $<span id="estimate-total">140</span>/per employee per month</h1>
             <div class="breakdown">
-                <h2>HR: $<span id="hr-total">72</span></h2>
+                <h2>HR: $<span id="hr-total">70</span></h2>
                 <h2>Benefits: $<span id="benefits-total">0</span></h2>
-                <h2>Payroll: $<span id="payroll-total">41</span></h2>
+                <h2>Payroll: $<span id="payroll-total">40</span></h2>
                 <h2>Technology: $<span id="tech-total">30</span></h2>
             </div>
         </div>
+
             <fieldset>
                 <label for="number-of-employees">Number of Employees</label>
                 <input type="number" name="number-of-employees" id="number-of-employees" placeholder="50" max="250" min="1" value="20" required>
@@ -67,7 +68,7 @@
             </fieldset>
     </div>
     <div class="hide">
-        <button onclick=formv3()>SENDFORM</button>
+        <button onclick=formv3()>Email My Quote</button>
     </div>
 
 
@@ -76,9 +77,9 @@
         trigger.addEventListener('click', function(e){
             e.preventDefault();
             const midpoint = document.querySelector('.midpoint');
-            const hiddenFieldsets = document.querySelectorAll('fieldset.hide');
-            hiddenFieldsets.forEach(function(fieldset) {
-                fieldset.classList.remove('hide');
+            const hiddenFields = document.querySelectorAll('.hide');
+            hiddenFields.forEach(function(hidden) {
+                hidden.classList.remove('hide');
             });
 
             midpoint.classList.add('hide');
@@ -99,18 +100,18 @@
         let employeeRange;
         let turnoverScale;
         let payFreqScale;
-        let technology;
-        let benefitsSupport;
-        let benefitsSupportTotal;
-        let benefitsBrokerCost;
-        let benefitsTotal;
-        let payrollTotal;
         let loaAdmin;
         let compliance;
         let hr2;
         let hr3;
-        let hrTotal;
-        let estimate;
+        let hrTotal = 70;
+        let benefitsSupport;
+        let benefitsSupportTotal;
+        let benefitsBrokerCost;
+        let benefitsTotal = 0;
+        let payrollTotal = 40;
+        let technology = 30;
+        let estimate = 140;
 
         function calculation(){
             const employeeValue = numEmployees.value;
@@ -397,16 +398,16 @@
                         case (payFreqScale == 2):
                             switch (true) {
                                 case (turnoverScale == 0):
-                                    payrollTotal = 38;
+                                    payrollTotal = 48;
                                     break;
                                 case (turnoverScale == 1):
-                                    payrollTotal = 39;
+                                    payrollTotal = 49;
                                     break;
                                 case (turnoverScale == 2):
-                                    payrollTotal = 39;
+                                    payrollTotal = 49;
                                     break;
                                 case (turnoverScale == 3):
-                                    payrollTotal = 40;
+                                    payrollTotal = 50;
                                     break;
                                 default:
                                     break;
@@ -608,11 +609,9 @@
                                     payrollTotal = 39;
                                     break;
                                 case (turnoverScale == 2):
-                                    console.log('this')
                                     payrollTotal = 39;
                                     break;
                                 case (turnoverScale == 3):
-                                    console.log('that')
                                     payrollTotal = 40;
                                     break;
                                 default:
@@ -686,20 +685,150 @@
             }
 
             // HR Tier 2
+            switch (true) {
+                case (turnoverScale == 0):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr2 = 20;
+                            break;
+                        case (employeeRange < 6):
+                            hr2 = 15;
+                            break;
+                        case (employeeRange > 5):
+                            hr2 = 10;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case (turnoverScale == 1):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr2 = 21;
+                            break;
+                        case (employeeRange < 6):
+                            hr2 = 16;
+                            break;
+                        case (employeeRange > 5):
+                            hr2 = 11;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case (turnoverScale == 2):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr2 = 22;
+                            break;
+                        case (employeeRange < 6):
+                            hr2 = 17;
+                            break;
+                        case (employeeRange > 5):
+                            hr2 = 11;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case (turnoverScale == 3):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr2 = 23;
+                            break;
+                        case (employeeRange < 6):
+                            hr2 = 17;
+                            break;
+                        case (employeeRange > 5):
+                            hr2 = 12;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
 
             // HR Tier 3
+            switch (true) {
+                case (turnoverScale == 0):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr3 = 15;
+                            break;
+                        case (employeeRange > 2):
+                            hr3 = 10;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case (turnoverScale == 1):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr3 = 16;
+                            break;
+                        case (employeeRange > 2):
+                            hr3 = 11;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case (turnoverScale == 2):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr3 = 17;
+                            break;
+                        case (employeeRange > 2):
+                            hr3 = 11;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case (turnoverScale == 3):
+                    switch (true) {
+                        case (employeeRange < 3):
+                            hr3 = 17;
+                            break;
+                        case (employeeRange > 2):
+                            hr3 = 12;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
 
             // HR Total
-            hrTotal = loaAdmin + compliance;
+            hrTotal = loaAdmin + compliance + hr2 + hr3;
 
             // Estimate
-            estimate = technology + benefitsTotal + payrollTotal;
+            estimate = technology + benefitsTotal + payrollTotal + hrTotal;
 
             embedTechTotal.innerHTML = technology;
             embedBenefitsTotal.innerHTML = benefitsTotal;
             embedPayrollTotal.innerHTML = payrollTotal;
             embedHrTotal.innerHTML = hrTotal;
             embedEstimateTotal.innerHTML = estimate;
+
+            // console.table data
+            const showData = {}
+            showData.loaAdmin = loaAdmin;
+            showData.compliance = compliance;
+            showData.hr2 = hr2;
+            showData.hr3 = hr3;
+            showData.benefitsBrokerCost = benefitsBrokerCost;
+            showData.benefitsSupportTotal = benefitsSupportTotal;
+            showData.benefitsTotal = benefitsTotal;
+            showData.payrollTotal = payrollTotal;
+            showData.technology = technology;
+            showData.estimate = estimate;
+            console.table(showData);
         }
 
         numEmployees.addEventListener('change', calculation);
@@ -736,6 +865,26 @@
                 "objectTypeId": "0-1",
                 "name": "will_melita_be_your_benefits_broker_",
                 "value": benefitsBroker.value
+                },
+                {
+                "objectTypeId": "0-1",
+                "name": "hr_estimate",
+                "value": hrTotal
+                },
+                {
+                "objectTypeId": "0-1",
+                "name": "benefits_estimate",
+                "value": benefitsTotal
+                },
+                {
+                "objectTypeId": "0-1",
+                "name": "payroll_estimate",
+                "value": payrollTotal
+                },
+                {
+                "objectTypeId": "0-1",
+                "name": "technology_estimate",
+                "value": technology
                 },
                 {
                 "objectTypeId": "0-1",
