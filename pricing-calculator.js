@@ -586,8 +586,11 @@ function calculation(){
         case (employeeRange < 4):
             loaAdmin = 15;
             break;
-        case (employeeRange == 5):
+        case (employeeRange == 4):
             loaAdmin = 10;
+            break;
+        case (employeeRange == 5):
+            loaAdmin = 9;
             break;
         case (employeeRange == 6):
             loaAdmin = 8;

@@ -121,6 +121,15 @@
             High: 29
             Very High: 29
 
+## HR: LOA
+    ER1: 15
+    ER2: 15
+    ER3: 15
+    ER4: 10
+    ER5: 9
+    ER6: 8
+    ER7: 7
+
 ## HR: Tier 2
     Turnover: 0
         ER1: 20
